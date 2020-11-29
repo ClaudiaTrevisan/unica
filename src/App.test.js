@@ -1,7 +1,7 @@
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import axios from 'axios';
-import Signup, { url } from './components/signup/Signup'
+import { url } from './components/signup/Signup'
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
@@ -10,6 +10,7 @@ axios.post = jest.fn().mockResolvedValue()
 describe("Unica", () =>{
 
   test('renders elements correctly', async () => {
+    
     const {getByPlaceholderText} = render(<App/>)
 
     expect(getByPlaceholderText("Name")).toBeInTheDocument()

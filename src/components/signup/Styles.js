@@ -17,7 +17,7 @@ export const Img = styled.img`
     width: 203px;
     margin-top: 18px;
     padding-top: 15px;
-`
+`;
 
 export const FormSignup = styled.form`
     display: flex;
@@ -88,7 +88,7 @@ export const Button = styled.button`
         transform: scale(0.9);
         transition: all 0.3s ease 0s;
     }
-`
+`;
 
 
 

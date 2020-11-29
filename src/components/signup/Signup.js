@@ -1,5 +1,7 @@
 import Axios from 'axios';
 import React, { useState } from 'react';
+import { useForm, validation } from '../../globals/customs';
+import logo from '../../img/logo.png'
 import { P,
      DivFinish, 
      DivImg, 
@@ -10,37 +12,9 @@ import { P,
      Button, 
      SignupText,
      TextNewRegister,
-    } from './Styles';
-import logo from '../../img/logo.png'
+} from './Styles';
 
 export const url = "https://hackaton.tecnologiaunica.com.br/api"
-
-export const useForm = (initialState) =>{
-    const [form, setForm] = useState(initialState)
-
-    const onChange = (name, value) =>{
-        const newForm = {...form, [name]: value};
-
-        setForm(newForm)
-    };
-
-    const resetState = () =>{
-        setForm(initialState)
-    };
-
-    return {form, onChange, resetState}
-};
-
-const validation = (body) =>{
-    const bodyNames = [Object.keys(body)];
-    const bodyValues = [Object.values(body)];
-
-    for(let i = 0; i < bodyValues.length; i++){
-        if(!bodyValues[i]){
-            alert(`"${bodyNames[i]}" deve ser preenchido`)
-        }
-    }
-};
 
 export default function Signup () {
     const { form, onChange, resetState } = useForm({
@@ -125,7 +99,10 @@ export default function Signup () {
                 />
                 <DivFinish state={state}>
                     <P>Thanks!</P>
-                    <TextNewRegister onClick={clickChangeState}>New register? click here</TextNewRegister>
+                    <TextNewRegister 
+                    onClick={clickChangeState}>
+                        New register? click here
+                    </TextNewRegister>
                 </DivFinish>
                 <Button>Confirm</Button>
             </FormSignup>
