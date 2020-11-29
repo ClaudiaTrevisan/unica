@@ -1,5 +1,6 @@
-import Axios from 'axios';
+import axios from 'axios';
 import React, { useState } from 'react';
+import { validation, useForm } from '../../globals/customs'
 import { TextFinish,
      DivFinish, 
      DivImg, 
@@ -14,34 +15,7 @@ import { TextFinish,
     } from './Styles';
 import logo from '../../img/logo.png'
 
-export const url = "https://hackathon.tecnologiaunica.com.br/api/ConexaoTech"
-
-export const useForm = (initialState) =>{
-    const [form, setForm] = useState(initialState)
-
-    const onChange = (name, value) =>{
-        const newForm = {...form, [name]: value};
-
-        setForm(newForm)
-    };
-
-    const resetState = () =>{
-        setForm(initialState)
-    };
-
-    return {form, onChange, resetState}
-};
-
-const validation = (body) =>{
-    const bodyNames = [Object.keys(body)];
-    const bodyValues = [Object.values(body)];
-
-    for(let i = 0; i < bodyValues.length; i++){
-        if(!bodyValues[i]){
-            alert(`"${bodyNames[i]}" deve ser preenchido`)
-        }
-    }
-};
+export const url = "https://cors-anywhere.herokuapp.com/https://hackathon.tecnologiaunica.com.br/api/ConexaoTech"
 
 export default function Signup () {
     const { form, onChange, resetState } = useForm({
@@ -53,12 +27,12 @@ export default function Signup () {
     const [state, setState] = useState(false)
 
     const registerUser = (input) => {
-      Axios.post(url, input).then((response) =>{
-        setState(true)
-        resetState()
-      }).catch((error) =>{
-        console.log(error.message)
-      })
+        axios.post(url, input).then((response) =>{
+            setState(true)
+            resetState()
+        }).catch((error) =>{
+            console.log(error.message)
+        })
     }
   
     const onSubmit = (event) => {
