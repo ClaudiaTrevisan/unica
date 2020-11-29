@@ -1,6 +1,4 @@
-import Axios from "axios";
-import { useState } from "react";
-import Signup, { url } from "./components/signup/Signup";
+import Signup from "./components/signup/Signup";
 
 function App() {
 
