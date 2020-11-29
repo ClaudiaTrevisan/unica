@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import React, { useState } from 'react';
-import { P,
+import { TextFinish,
      DivFinish, 
      DivImg, 
      Img,
@@ -9,11 +9,12 @@ import { P,
      Input, 
      Button, 
      SignupText,
+     DivForm,
      TextNewRegister,
     } from './Styles';
 import logo from '../../img/logo.png'
 
-export const url = "https://hackaton.tecnologiaunica.com.br/api"
+export const url = "https://hackathon.tecnologiaunica.com.br/api/ConexaoTech"
 
 export const useForm = (initialState) =>{
     const [form, setForm] = useState(initialState)
@@ -63,15 +64,15 @@ export default function Signup () {
     const onSubmit = (event) => {
         event.preventDefault()
         const body = {
-          "name": form.name,
-          "age": Number(form.age),
+          "nome": form.name,
+          "idade": Number(form.age),
           "email": form.email,
-          "city": form.city
+          "cidade": form.city
         }
         
         validation(body)
-        
-        registerUser(body, resetState)
+
+        registerUser(body)
     }
 
     const clickChangeState = () =>{
@@ -89,46 +90,48 @@ export default function Signup () {
             <DivImg>
                 <Img src={logo}/>
             </DivImg>
-            <FormSignup onSubmit={onSubmit}>
-                <SignupText>Signup</SignupText>
-                <Input
-                    type = "text"
-                    value={form.name} 
-                    name = "name"
-                    onChange = {onType}
-                    placeholder = "Name"
-                    required
-                />
-                <Input
-                    type = "text"
-                    value={form.age} 
-                    name = "age"
-                    onChange = {onType}
-                    placeholder = "Age"
-                    required
-                />
-                <Input
-                    type = "email"
-                    value={form.email} 
-                    name = "email"
-                    onChange = {onType}
-                    placeholder = "Email"
-                    required
-                />
-                <Input
-                    type = "text"
-                    value={form.city} 
-                    name = "city"
-                    onChange = {onType}
-                    placeholder = "City"
-                    required
-                />
-                <DivFinish state={state}>
-                    <P>Thanks!</P>
-                    <TextNewRegister onClick={clickChangeState}>New register? click here</TextNewRegister>
-                </DivFinish>
-                <Button>Confirm</Button>
-            </FormSignup>
+            <DivForm>
+                <FormSignup onSubmit={onSubmit}>
+                    <SignupText>Signup</SignupText>
+                    <Input
+                        type = "text"
+                        value={form.name} 
+                        name = "name"
+                        onChange = {onType}
+                        placeholder = "Name"
+                        required
+                    />
+                    <Input
+                        type = "text"
+                        value={form.age} 
+                        name = "age"
+                        onChange = {onType}
+                        placeholder = "Age"
+                        required
+                    />
+                    <Input
+                        type = "email"
+                        value={form.email} 
+                        name = "email"
+                        onChange = {onType}
+                        placeholder = "Email"
+                        required
+                    />
+                    <Input
+                        type = "text"
+                        value={form.city} 
+                        name = "city"
+                        onChange = {onType}
+                        placeholder = "City"
+                        required
+                    />
+                    <DivFinish state={state}>
+                        <TextFinish>Thanks!</TextFinish>
+                        <TextNewRegister onClick={clickChangeState}>New register? click here</TextNewRegister>
+                    </DivFinish>
+                    <Button>Confirm</Button>
+                </FormSignup>
+            </DivForm>
         </DivOut>
     )
 }
