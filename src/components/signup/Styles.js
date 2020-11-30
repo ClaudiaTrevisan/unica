@@ -1,4 +1,17 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+export const Animation = keyframes`
+{
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+}
+`;
 
 export const DivOut = styled.div`
     display: flex;
@@ -137,5 +150,11 @@ export const Button = styled.button`
     }
 `;
 
-
+export const ImgLoading = styled.img`
+    display: ${(props => props.load ? "block" : "none")};
+    animation: ${Animation} 3.5s infinite;
+    width: 50px;
+    position: absolute;
+    bottom: 110px;
+`
 

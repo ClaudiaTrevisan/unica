@@ -12,8 +12,10 @@ import { TextFinish,
      SignupText,
      DivForm,
      TextNewRegister,
+     ImgLoading,
     } from './Styles';
 import logo from '../../img/logo.png'
+import loading from '../../img/loading.svg'
 
 export const url = "https://cors-anywhere.herokuapp.com/https://hackathon.tecnologiaunica.com.br/api/ConexaoTech"
 
@@ -25,6 +27,7 @@ export default function Signup () {
         city:""
     });
     const [state, setState] = useState(false)
+    const [load, setLoad] = useState(false)
     const [info, setInfo] = useState({id: 0, name: ''})
 
     const takeName = (id, name) =>{
@@ -38,10 +41,11 @@ export default function Signup () {
     const registerUser = (input) => {
         axios.post(url, input).then((response) =>{
             takeName(response.data.Id, response.data.Nome)
+            setLoad(false)
             setState(true)
             resetState()
         }).catch((error) =>{
-            console.log(error.message)
+            alert("Falha. Tente novamente!")
         })
     }
   
@@ -57,6 +61,8 @@ export default function Signup () {
         validation(body)
 
         registerUser(body)
+
+        setLoad(true)
     }
 
     const clickChangeState = () =>{
@@ -118,6 +124,7 @@ export default function Signup () {
                         <TextNewRegister onClick={clickChangeState}>Novo cadastro? click aqui</TextNewRegister>
                     </DivFinish>
                     <Button>Confirma</Button>
+                    <ImgLoading src={loading} load={load}/>
                 </FormSignup>
             </DivForm>
         </DivOut>
