@@ -25,9 +25,19 @@ export default function Signup () {
         city:""
     });
     const [state, setState] = useState(false)
+    const [info, setInfo] = useState({id: 0, name: ''})
+
+    const takeName = (id, name) =>{
+        const arrayName = name.split(" ")
+        setInfo({
+            id: id, 
+            name: arrayName[0]
+        })
+    }
 
     const registerUser = (input) => {
         axios.post(url, input).then((response) =>{
+            takeName(response.data.Id, response.data.Nome)
             setState(true)
             resetState()
         }).catch((error) =>{
@@ -66,13 +76,13 @@ export default function Signup () {
             </DivImg>
             <DivForm>
                 <FormSignup onSubmit={onSubmit}>
-                    <SignupText>Signup</SignupText>
+                    <SignupText>Cadastro</SignupText>
                     <Input
                         type = "text"
                         value={form.name} 
                         name = "name"
                         onChange = {onType}
-                        placeholder = "Name"
+                        placeholder = "Nome"
                         required
                     />
                     <Input
@@ -80,7 +90,7 @@ export default function Signup () {
                         value={form.age} 
                         name = "age"
                         onChange = {onType}
-                        placeholder = "Age"
+                        placeholder = "Idade"
                         required
                     />
                     <Input
@@ -96,14 +106,18 @@ export default function Signup () {
                         value={form.city} 
                         name = "city"
                         onChange = {onType}
-                        placeholder = "City"
+                        placeholder = "Cidade"
                         required
                     />
                     <DivFinish state={state}>
-                        <TextFinish>Thanks!</TextFinish>
-                        <TextNewRegister onClick={clickChangeState}>New register? click here</TextNewRegister>
+                        <TextFinish>{`
+                            Obrigado, ${info.name}.
+                            Id: ${info.id}
+                            `}
+                        </TextFinish>
+                        <TextNewRegister onClick={clickChangeState}>Novo cadastro? click aqui</TextNewRegister>
                     </DivFinish>
-                    <Button>Confirm</Button>
+                    <Button>Confirma</Button>
                 </FormSignup>
             </DivForm>
         </DivOut>

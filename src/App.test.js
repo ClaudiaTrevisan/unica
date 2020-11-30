@@ -12,10 +12,10 @@ describe("Unica", () =>{
   test('renders elements correctly', async () => {
     const {getByPlaceholderText} = render(<App/>)
 
-    expect(getByPlaceholderText("Name")).toBeInTheDocument()
-    expect(getByPlaceholderText("Age")).toBeInTheDocument()
+    expect(getByPlaceholderText("Nome")).toBeInTheDocument()
+    expect(getByPlaceholderText("Idade")).toBeInTheDocument()
     expect(getByPlaceholderText("Email")).toBeInTheDocument()
-    expect(getByPlaceholderText("City")).toBeInTheDocument()
+    expect(getByPlaceholderText("Cidade")).toBeInTheDocument()
 
   });
 
@@ -31,11 +31,11 @@ describe("Unica", () =>{
     const {getByPlaceholderText, getByText} = render(<App/>)
 
     try {
-      const inputName = getByPlaceholderText('Name')
+      const inputName = getByPlaceholderText('Nome')
       await userEvent.type(inputName, 'test')
   
   
-      const inputAge = getByPlaceholderText('Age')
+      const inputAge = getByPlaceholderText('Idade')
       await userEvent.type(inputAge, 33)
   
   
@@ -43,7 +43,7 @@ describe("Unica", () =>{
       await userEvent.type(inputEmail, 'test@email.com')
       
   
-      const inputCity = getByPlaceholderText('City')
+      const inputCity = getByPlaceholderText('Cidade')
       await userEvent.type(inputCity, 'test')
 
       expect(inputName).toHaveValue('test')

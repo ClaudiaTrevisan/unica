@@ -89,27 +89,29 @@ export const DivFinish = styled.div`
     display: ${(props=> props.state ? "flex" : "none")};
     flex-direction: column;
     position: absolute;
-    background-color: #008b8b75;
+    background-color: #0e1010c2;
     width: 90vw;
     height: 40vh;
     align-items: center;
     justify-content: center;
 
     @media (min-width: 640px){
-        width: 292px;
+        width: 300px;
     }
 `;
 
 export const TextFinish = styled.p`
     text-align: center;
     font-weight: 700;
-    font-size: 4rem;
+    font-size: 2.2rem;
+    color: white;
 `;
 
 export const TextNewRegister = styled.p`
     font-size: .7rem;
     font-weight: 700;
     cursor: pointer;
+    color: #e6cbcb;
 `;
 
 export const Button = styled.button`
