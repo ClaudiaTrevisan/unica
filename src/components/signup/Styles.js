@@ -15,7 +15,7 @@ export const DivImg = styled.div`
    @media (min-width: 640px){
        height: 184px;
        width: 100%;
-       background-color: #E4D9D9;
+       background-color:  #3A3A3A;
        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
    }
 `;
@@ -42,7 +42,7 @@ export const DivForm = styled.div`
         top: 128px;
         width: 28vw;
         height: 65vh;
-        background-color: #FFFF;
+        background-color: white;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 `
@@ -118,21 +118,22 @@ export const Button = styled.button`
     height: 31px;
     width: 141px;
     border-radius: 10px;
-    background-color: #AC121D;
+    background-color:  #3A3A3A;
     cursor: pointer;
     border: none;
     box-shadow: 0px 4px 4px 0px gray;
     font-size: 1.1rem;
     margin-top: 45px;
+    color: white;
 
     :focus{
       outline: none;
-      box-shadow: 0px 4px 4px #AC121D;
+      box-shadow: 0px 4px 4px;
     };
 
     :hover{
         transform: scale(0.9);
-        transition: all 0.3s ease 0s;
+        transition: all 0.5s ease 1.3s;
     }
 `;
 
